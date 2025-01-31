@@ -1,0 +1,164 @@
+{
+  "d": {
+    "actions": {
+      "finish": [],
+      "init": {
+        "custom": "-- Enhanced Sound\n\naura_env.EnhancedVolumeON = function()\n    -- save original settings\n    aura_env.originalVolume = tonumber(GetCVar(\"Sound_MasterVolume\"))\n    aura_env.originalAmbience = tonumber(GetCVar(\"Sound_EnableAmbience\"))\n    aura_env.originalDialog = tonumber(GetCVar(\"Sound_EnableDialog\"))\n    aura_env.originalMusic = tonumber(GetCVar(\"Sound_EnableMusic\"))\n    aura_env.originalPet = tonumber(GetCVar(\"Sound_EnablePetSounds\"))\n    aura_env.originalEmote = tonumber(GetCVar(\"Sound_EnableEmoteSounds\"))\n    aura_env.originalSFX = tonumber(GetCVar(\"Sound_EnableSFX\"))\n    aura_env.originalBG = tonumber(GetCVar(\"Sound_EnableSoundWhenGameIsInBG\"))\n    aura_env.originalAll = tonumber(GetCVar(\"Sound_EnableAllSound\"))\n    aura_env.originalSFXVol = tonumber(GetCVar(\"Sound_SFXVolume\"))\n    \n    if aura_env.config.enhanceBobber then\n        SetCVar(\"Sound_MasterVolume\", 0.7)\n        SetCVar(\"Sound_EnableAmbience\", 0)\n        SetCVar(\"Sound_EnableDialog\", 0)\n        SetCVar(\"Sound_EnableMusic\", 0)\n        SetCVar(\"Sound_EnablePetSounds\", 0)\n        SetCVar(\"Sound_EnableEmoteSounds\", 0)\n        SetCVar(\"Sound_EnableSFX\", 1)\n        SetCVar(\"Sound_EnableSoundWhenGameIsInBG\", 1)\n        SetCVar(\"Sound_EnableAllSound\", 1)\n        SetCVar(\"Sound_SFXVolume\", 1)\n    else\n        aura_env.originalVolume = nil\n        aura_env.originalAmbience = nil\n        aura_env.originalDialog = nil\n        aura_env.originalMusic = nil\n        aura_env.originalPet = nil\n        aura_env.originalEmote = nil\n        aura_env.originalSFX = nil\n        aura_env.originalBG = nil\n        aura_env.originalAll = nil\n        aura_env.originalSFXVol = nil\n    end\nend\n\n-- restore original settings\naura_env.EnhancedVolumeOFF = function()\n    if aura_env.originalVolume ~= nil then\n        SetCVar(\"Sound_MasterVolume\", aura_env.originalVolume)\n        SetCVar(\"Sound_EnableAmbience\", aura_env.originalAmbience)\n        SetCVar(\"Sound_EnableDialog\", aura_env.originalDialog)\n        SetCVar(\"Sound_EnableMusic\", aura_env.originalMusic)\n        SetCVar(\"Sound_EnablePetSounds\", aura_env.originalPet)\n        SetCVar(\"Sound_EnableEmoteSounds\", aura_env.originalPet)\n        SetCVar(\"Sound_EnableSFX\", aura_env.originalSFX)\n        SetCVar(\"Sound_EnableSoundWhenGameIsInBG\", aura_env.originalBG)\n        SetCVar(\"Sound_EnableAllSound\", aura_env.originalAll)\n        SetCVar(\"Sound_SFXVolume\", aura_env.originalSFXVol)\n    end\nend\n\n\n\n",
+        "do_custom": true
+      },
+      "start": []
+    },
+    "anchorFrameType": "SCREEN",
+    "anchorPoint": "CENTER",
+    "animation": {
+      "finish": {
+        "duration_type": "seconds",
+        "easeStrength": 3,
+        "easeType": "none",
+        "type": "none"
+      },
+      "main": {
+        "duration_type": "seconds",
+        "easeStrength": 3,
+        "easeType": "none",
+        "type": "none"
+      },
+      "start": {
+        "duration_type": "seconds",
+        "easeStrength": 3,
+        "easeType": "none",
+        "type": "none"
+      }
+    },
+    "authorOptions": [
+      {
+        "default": true,
+        "desc": "Select to have sound configured",
+        "key": "enhanceBobber",
+        "name": "Enable Enhanced Bobber Sounds",
+        "type": "toggle",
+        "useDesc": true,
+        "width": 1
+      },
+      {
+        "noMerge": false,
+        "text": "",
+        "type": "header",
+        "useName": false,
+        "width": 1
+      },
+      {
+        "default": "567478",
+        "desc": "Enter soundfile relative path or soundfile ID",
+        "key": "soundFile",
+        "length": 10,
+        "multiline": false,
+        "name": "Sound to play",
+        "type": "input",
+        "useDesc": true,
+        "useLength": false,
+        "width": 2
+      }
+    ],
+    "automaticWidth": "Auto",
+    "color": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "conditions": [],
+    "config": {
+      "enhanceBobber": true,
+      "soundFile": "567478"
+    },
+    "customTextUpdate": "event",
+    "desc": "This works in both classic and retail game versions.\nThis Weak Aura is designed for the visually impaired. It utilizes sound ques to allow the user to fish in World of Warcraft by only using audio. An audio que is triggered when a good cast lands that then allows using the interact function in wow to click the bobber without seeing it.\n\nAlso suggested is to use a different soundfile for the initial cast to make it easier to hear. Set in the custom options section. Default is to use the 'readycheck' sound, since it is loud. Enter in your own soundID or soundfile path. If playing in classic, you can also set your own sound for the 'splash/bite'. Place your own sound file in the locations below for classic:\n ..\\_classic_\\sound\\Spells\\tradeskills\\FishBite.ogg\n ..\\_classic_\\sound\\Spells\\FishingBobber_ver2_1.ogg\n ..\\_classic_\\sound\\Spells\\FishingBobber_ver2_2.ogg\n ..\\_classic_\\sound\\Spells\\FishingBobber_ver2_3.ogg\n\nThere are a couple sound files in here that are good for a nice 'ding' sound or a spoken 'fish' word to use:\nhttps://github.com/Glacerr/AI-FishBot/tree/main/AudioModule\n",
+    "displayText": "",
+    "displayText_format_p_format": "timed",
+    "displayText_format_p_time_dynamic_threshold": 60,
+    "displayText_format_p_time_format": 0,
+    "displayText_format_p_time_legacy_floor": false,
+    "displayText_format_p_time_mod_rate": true,
+    "displayText_format_p_time_precision": 1,
+    "fixedWidth": 200,
+    "font": "Friz Quadrata TT",
+    "fontSize": 12,
+    "frameStrata": 1,
+    "id": "Fishing for the visually impaired",
+    "information": [],
+    "internalVersion": 73,
+    "justify": "LEFT",
+    "load": {
+      "class": {
+        "multi": []
+      },
+      "size": {
+        "multi": []
+      },
+      "spec": {
+        "multi": []
+      },
+      "talent": {
+        "multi": []
+      }
+    },
+    "outline": "OUTLINE",
+    "regionType": "text",
+    "selfPoint": "BOTTOM",
+    "semver": "1.0.0",
+    "shadowColor": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "shadowXOffset": 1,
+    "shadowYOffset": -1,
+    "source": "import",
+    "subRegions": [
+      {
+        "type": "subbackground"
+      }
+    ],
+    "tocversion": 100207,
+    "triggers": {
+      "1": {
+        "trigger": {
+          "custom": "function(event,old,new,...)\n    \n    local function SetSoftTarget()\n        -- print(\"Fishing for the visually imparied is enabled\") -- yes, i know this msg is ironic\n        SetCVar(\"SoftTargetInteract\", 3)\n        SetCVar(\"SoftTargetInteractArc\", 2)\n        SetCVar(\"SoftTargetInteractRange\", 30) -- ranged may be fixed some say\n        SetCVar(\"SoftTargetInteractGameObject\", 1)\n        SetCVar(\"SoftTargetIconInteract\", 1)\n        SetCVar(\"SoftTargetTooltipInteract\", 1)\n        aura_env.EnhancedVolumeON()\n    end\n    \n    if event == \"PLAYER_SOFT_INTERACT_CHANGED\" then\n        local arg1 = new --arg1 represents the 'new' target it changed to\n        if arg1 ~= nil then\n            if (string.match(arg1, \"35591\")) == \"35591\" then\n                -- 35591 is bobber game object id. Looks like it's the same across all wow versions\n                -- code to detect a good bobber interact cast with sound added\n                -- Removed the gametooltip part, dont really need that. for ref:\n                -- and GameTooltipTextLeft1:GetText() == \"Fishing Bobber\" then\n                PlaySoundFile(aura_env.config.soundFile, \"SFX\")\n                return true\n            else\n                return false\n            end\n        end\n        return false\n    end\n    \n    -- retail\n    if event == \"UNIT_SPELLCAST_CHANNEL_START\" then\n        local unit,fishingId = old,...\n        if (unit == \"player\") and (fishingId == 131476) then\n            SetSoftTarget()\n            aura_env.EnhancedVolumeON()\n        end\n        return false\n    end\n    \n    -- classic\n    if event == \"PLAYER_EQUIPMENT_CHANGED\" then\n        local fishingPole = IsEquippedItemType(\"Fishing Pole\")\n        if fishingPole then\n            print(\"Fishing for the visually imparied is enabled\") -- yes, i know this msg is ironic\n            SetCVar(\"SoftTargetInteract\", 3)\n            SetCVar(\"SoftTargetInteractArc\", 2)\n            SetCVar(\"SoftTargetInteractRange\", 30) -- ranged may be fixed some say\n            SetCVar(\"SoftTargetInteractGameObject\", 1)\n            SetCVar(\"SoftTargetIconInteract\", 1)\n            SetCVar(\"SoftTargetTooltipInteract\", 1)\n            aura_env.EnhancedVolumeON()\n        end\n        return false\n    end\n    return false\nend\n\n\n\n",
+          "custom_hide": "custom",
+          "custom_type": "event",
+          "debuffType": "HELPFUL",
+          "event": "Health",
+          "events": "PLAYER_SOFT_INTERACT_CHANGED, PLAYER_SOFT_TARGET_INTERACTION,PLAYER_EQUIPMENT_CHANGED,UNIT_SPELLCAST_CHANNEL_START,UNIT_SPELLCAST_CHANNEL_STOP",
+          "names": [],
+          "spellIds": [],
+          "subeventPrefix": "SPELL",
+          "subeventSuffix": "_CAST_START",
+          "type": "custom",
+          "unit": "player"
+        },
+        "untrigger": {
+          "custom": "function(event,...)\n    \n    local function unsetSoftTarget()\n        SetCVar(\"SoftTargetInteract\", 0)\n        SetCVar(\"SoftTargetInteractArc\", 0)\n        SetCVar(\"SoftTargetInteractRange\", 10) -- ranged may be fixed some say\n        SetCVar(\"softTargetInteractGameObject\", 0)\n        SetCVar(\"SoftTargetIconInteract\", 0)\n        SetCVar(\"SoftTargetTooltipInteract\", 0)\n        aura_env.EnhancedVolumeOFF()    \n    end\n    \n    -- retail\n    if event == \"UNIT_SPELLCAST_CHANNEL_STOP\" then\n        local unit,_,fishingId = ...\n        if (unit == \"player\") and (fishingId == 131476) then\n            -- disable  soft targeting\n            unsetSoftTarget()\n            return true\n        end\n        return true\n    end\n    \n    -- classic\n    if event == \"PLAYER_EQUIPMENT_CHANGED\" then\n        \n        local ver = WOW_PROJECT_ID == WOW_PROJECT_MAINLINE and \"retail\" or \"unknown\"\n        \n        local fishingPole = IsEquippedItemType(\"Fishing Pole\")\n        if (not fishingPole) and (ver ~= \"retail\") then\n            unsetSoftTarget()\n            return true\n        end\n        \n        return true\n    end\n    \n    return true\nend"
+        }
+      },
+      "activeTriggerMode": -10
+    },
+    "uid": "QnpE(byZz7T",
+    "url": "https://wago.io/ajvyuK3Io/1",
+    "version": 1,
+    "wagoID": "ajvyuK3Io",
+    "wordWrap": "WordWrap",
+    "xOffset": 0,
+    "yOffset": 0
+  },
+  "m": "d",
+  "s": "5.13.1",
+  "v": 1421,
+  "wagoID": "ajvyuK3Io"
+}
+
+
+https://wago.io/ajvyuK3Io
+
+!WA:2!1QvZUnYXr4ilh4eISo2BswKehd3MoyLycxQLsw7MOGfWKsKY0r)zsURSdwaU9mtpKT1WPh3DpsI(qoSiajNYbL3G9qoLt6rihcqUnyrEc8JGFcsvDpKIsIdPKwBciPzMU6QRUQV6RRAOM7j3U)T9UTYz1sLxPu5B793UNCWU((kMEoPiwhWdzYDFC7TAStn5HmPIlcN)uEOVq2NQHBYfr84QOa6G2SJ1DSpVtuhnVpl9U5IUB2IeW6sDh0XpqiK9(gAOBpHSUK2N1EqeZP16nRvBNtOHC7Q9GQ9P8W6v1WGvdfHSx6flnJ0bFKuXCfHEQNZOkJcsEZ)nEzlTKf2v37nAQ0uPUEYTsEZKFCYBL82WFV9B44Zd5QEx8XNOyb(7j4HANQ72U9UBVCSmi6D6P1rQ1wAPJODfL4ILOFXHdI)JR0qSuz5XPUohfRp4TAwU09lD)xsJ1WUA3i0ovRDyvpMYn69AXcyUAIwq6rpKruI4qpcy((8UXsMxZJ4E6EZV8bSbVKf2d8mSQchhMm5woAr3UbmzSITbOQNvne8xrVBTqQtaJuZkShXkoPfQyL0J5tJd0p7jYqX2mzxwpqr9yupqJV38OU2b0sVQAig9A)ZK377Fc8OTmUTEGAX)(ZsE3O7vludk1yT(Cy5KSaiaaBGiQUhrm(qn24K(WsYrquVeYjMrQdJKCRM8WOyDYh8SKF9lngi6hqisYDDw9bp8dF4VtsDn(Rhufco6764gR0I(h)dv37ENTfntnxokac6WcpS0WbEIiiUpB3DipI4hhAu0IfYrGpWSvO7wi5D5H0aceU08WUkZOJu0WHTkcuJweg3hCNlUjtV(tOYfZBw7oBtvG)Wkw(cfMSwQ03HZa7Ak6Xg8gkyMAAdonq0DM6XkwMAz7yf3DMkXivM6ypMEMAaKXI(Yul16l0Z2TyKAgAQv9pBM6bKjZ5xDZzpD8697Xc3eYuAOAewDZSd5bbZoAheyUDA7jaznf9yfymON5xC)ZuLLqP05yqiAypyKe)0Aka6IK7x6HfYs0lGzbHNHOPWYzlOf6nB5odGnBzhhenBPrOsrs5zj1eqeZEwJI7tt0ZcTJKIfOyJepBQQqEq2sngv0uLBerZuLAirYufYYumvrgsdmvHSz4tvets803)M8YzTo2SUHsXGZyWFYbhEizWXqYjD(rwhcvV(LpfA8m0le)(ZM196KIMHMU6PTzcsUQPZzGEUIj5tgvDnY8NeI7ArgCduGLFysyNBeLXeqYxDsKjbYVs8kza9lCEuFUCN4j6yR)6zj)KCj)0Co2JvUBYsjlN8(pl6dYUa)ijZLBABWbRygQjCubZnDfbc5Nmp855hjKE7lPrpF)0lIEl7kIQ8XrEunRj7qwO(B4ybOik32nY)y5yU3PFAyuTfDg8N(Qh2(f(8JzE7Jvp)x(rVqlCtBB5Np3FvCQTbdBr9RxBN21Ak)cyz4(dQUvT6Tpv1J6joADJDn3CZn)luXonzDXcr)L3j5wVeU1H6Eqxj6lDGcALUmhE)iHu)s7C)CBla)QV3P(yBmqRhunD(thZb9APs(zwjN)fyplCtXU5sE3JF9nA3JRiGd5afHhsCeqD1Ubufs1sHkLLmnfyi6cANKU3uLYzM0(m6bKkquLa3aTzW7gcvjdbeKpHCixftdcgqadMYHEmkrAOjXyb6FftL2bYxgdxcfJdckoYmnOpaj(eFOhj0GGiuGhr4t2NkDLuFnXzarec6fYBd7cOkpUOePsO9kuJO5ObmwxgSQKJa0pHs6keqdpaxgja2wGa9OAdVNDTvPQdnbtmhAiyepkAhhH2NaCnC3dms5yRU5io0UvSgyMz4856s5YvjqjiQyWaaQtpJ5iWngygECFFWSc1J15Yqpg26bqLzTsyg9PhaputGMk5wNc0bLSeMJHweoflQLiSD7bgHXElr2W2)1ylnk9csOdSbU9yUhSGD9lsGDTRzvardeXquY2ZfSadaahrCuOv0gBC((TWoWGqQVPrkZwpCiWPiovyBG(w0ta27511OT8ciov1BjhUMTqjYEbuWyUOS4QLUFdeUu7w1HHigupPl6A5iLk90oP315PMj)0wrSGa1tH8caGEahVUoGSQcRxjOV2PnhuoyFzRITdG9xUt5BWCw(gmNvmZbYYaOcHI)a9QhhfWgZLysxncyGYOugmo6sOWP6GJCbpqVPrAI5XQiXbaKFbm7AbmR3lfFSwUHVPHUaGo2bkLV)sBIHdPCPknUNXPj0lPLm2s4RfzPky622cV4awUVMgdWqiY4AycRwbUn6DMinT9IMiBTxu(SzY7l86aKzSNvnqq9Q7OPbqwZDAA6XpxtJR8ojpnxvfqNyViI5Ixe9BZwREdcP9HiGUhuAvprG3GNNYuOEZ7EsCy6n3jz1JF9VCuzuMJckwQuPXA7brIbNXqehQWAe81TPYUm9It8eXHJ2iLGjZodUOGvKUxzzBsd7AkJ)(fW3)GeV1d4sgaPmeZPvaGaiZv0bxwDQlPoSWHDD(c2vXAHJwUYBT2cbeiJMS8zxD7IfgfbWYfgDJPyz8KQHv8AIzKh9is(hVtJ2DATxTT2A9kTA3z9pUYo7uBRoTAV7E5pFLV2yAmqdxStrFBAzdpOGAi0psiq3lIIy0ncZyY8fmhvU4yt5rKYRu(dF4dkC(vi1ubaQ5TNrq)nrBCiWepNyzJOWpWMnwcCIY4ZAsBOdzsJFrNvkv0L9w7TvLpVwZo1(0h3yVTHAwm(RnRTXfCvxWNbSwGBA)D3VZEn39tQTE7oWXfp68pz7kn2bFZUgFvEB0kpslLpo8GqGVpFwAp1VUNiaBBRHQ2xgZJIyEn0S(4lEDX8PCOeuK8foxSkuOhxbPHk0GHMFgAgtim9Q5)VAbIXhegqMs)8Fo1EUENECpwYQVWJ5e77J7u5hxBR9Q)4TQIiqhl6l5wjRc8v)G)7f4Ra2TIHSJMoVvRm2JaejscfcDMRDI11j526ByMUe8YBOCgWufjCcgtHzaJ2x1ffIlfHPqUztmUY1GyC5RfX4k3eIXwtNyS81HyS81KyS8Sjg3zXcxgDnP86w7whYnXwrQSEw52wicymLXxlb7iWBzUrYG2RuGcv2A3GHwiL8clG0TN1JQfJN)zM5KEnddZpvaOpSBj4qA3ElIsxKKFLvx93xoFHcgl3EZLNCkm1mmcVsli30PIWeyiCOC2TecO1MaUPw6fSMUcLH6kfkfw(VP4(Hn3mP1Wv4XWcL8yAuTPDtKUGJAxWu3o2pqAfxuppM3KuxtwFXHONcmf0C12qousTuxK4jGqguPoMJfYmIr1Lm5FsM)AtsHiLgIhtXoyHpBX81LxBtapb3SO1tomv2wQzgUuOg8bTg(DNS4fF1UJ(wvGOK5fCFP5pjMXl9(eVGW(0lo44CPt4CTZMWRCvavA2o7YagViaKp9B1cbAnLZxMvI(12V8QEG)R(jXJp3l5l(U(WMR1box3dD(o4GNB4Hpx7dGUjhc9Tk(8CdK(ga)AvSJbG2ck7HF8PDmPSMuv7Zvr)9PDEwrY4JctBZANjuJD3Pywy(ItJLO4uAKi5JC(yGXw3Rj(TJRYnSao8)tGKpA0(zpGaNFCtJoEUcB)VHNkx0BJF7ZhYABR(d6PM9V(Ev9HJbIER6s(xr(0yQh(I9iTB)cP59dA(3n43KN7f9(tnLbFVBph1ulOl5FXTp8)9zjRL8h()p
